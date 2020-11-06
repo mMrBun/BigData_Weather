@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>数据测试</title>
+    <link rel="stylesheet" href="/static/css/index_style.css">
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/echarts.min.js"></script>
+    <script type="text/javascript" src="/static/js/map/china.js"></script>
+    <script type="text/javascript"src="/static/js/provincesdata.js"></script>
+    <script type="text/javascript" src="/static/js/index_method.js"></script>
+</head>
+<body>
+
+<div id="header"><p>数据测试</p></div>
+<div class="left_map">
+    <div id="china-map"></div>
+    <div id="map_line"></div>
+    <div id="map_circle"></div>
+    <div id="map_bar"></div>
+    <div id="map_rectangle"></div>
+</div>
+
+<div class="right_map">
+<div id="map_final"></div>
+</div>
+
+
+
+<script>
+    var myChart = echarts.init(document.getElementById('china-map'));
+    var bar_map = echarts.init(document.getElementById('map_bar'));
+    var line_map = echarts.init(document.getElementById('map_line'));
+    var final_map = echarts.init(document.getElementById('map_final'));
+    var circle_map = echarts.init(document.getElementById('map_circle'));
+    var rectangle_map = echarts.init(document.getElementById('map_rectangle'));
+    var dic_standInfo={{ field|safe }};//匹配站台ID字典
+    var dic_standData={{ realData|safe }};//匹配站台数据字典
+    var targetData =new Array();//站台ID初始化字典数组
+    var readData =new Array();//站台数据初始化字典数组
+    var dic_data=[{name: "china",value: chinaData},{name: "安徽",value: anhuiData},{name: "北京",value: beijingData},{name: "重庆",value: chongqingData},{name: "福建",value: fujianData},{name: "甘肃",value: gansuData},{name: "广东",value: guangdogData},{name: "广西",value: guangxiData},{name: "贵州",value: guizhouData},{name: "河南",value: henanData},{name: "湖北",value: hubeiData},{name: "湖南",value: hunanData},{name: "江苏",value: jiangsuData},{name: "江西",value: jiangxiData},{name: "吉林",value: jilinData},{name: "辽宁",value: liaoningData},{name: "内蒙古",value: neimengguData},{name: "宁夏",value: ningxiaData},{name: "青海",value: qinghaiData},{name: "山东",value: shandongData},{name: "上海",value: shanghaiData},{name: "山西",value: shanxiData},{name: "四川",value: sichuanData},{name: "河北",value: hebeiData},{name: "海南",value: hainanData},{name: "天津",value: tianjinData},{name: "新疆",value: xinjiangData},{name: "西藏",value: xizangData},{name: "云南",value: yunnanData},{name: "浙江",value: zhejiangData},{name: "陕西",value: shanxi1Data},{name: "黑龙江",value: heilongjiangData}];
+    var provinces = ['shanghai', 'hebei', 'shanxi', 'neimenggu', 'liaoning', 'jilin', 'heilongjiang', 'jiangsu', 'zhejiang', 'anhui', 'fujian', 'jiangxi', 'shandong', 'henan', 'hubei', 'hunan', 'guangdong', 'guangxi', 'hainan', 'sichuan', 'guizhou', 'yunnan', 'xizang', 'shanxi1', 'gansu', 'qinghai', 'ningxia', 'xinjiang', 'beijing', 'tianjin', 'chongqing', 'xianggang', 'aomen'];
+    var provincesText = ['上海', '河北', '山西', '内蒙古', '辽宁', '吉林', '黑龙江', '江苏', '浙江', '安徽', '福建', '江西', '山东', '河南', '湖北', '湖南', '广东', '广西', '海南', '四川', '贵州', '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆', '北京', '天津', '重庆', '香港', '澳门'];
+    $(function () {
+     initEcharts("china", "中国");
+     initfinalmap();
+     initrectanglemap();
+    });
+</script>
+</body>
+</html>
